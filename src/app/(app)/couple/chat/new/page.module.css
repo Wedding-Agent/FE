@@ -1,0 +1,155 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 40px;
+  background: linear-gradient(180deg, #fff 0%, #fff6f8 45%, #f9fbff 100%);
+}
+
+.main {
+  width: min(640px, 100%);
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+
+/* 헤더 */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,241,245,.8);
+  color: #fb7185;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.backBtn:hover { background: rgba(251,113,133,.15); }
+
+.headerText { flex: 1; }
+.pageTitle { font-size: 20px; font-weight: 700; color: #20242c; margin: 0 0 2px; }
+.subTitle  { font-size: 13px; color: rgba(50,50,70,.55); margin: 0; }
+
+/* 검색 */
+.searchWrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.searchInput {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px 0 42px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255,182,193,.3);
+  background: rgba(255,255,255,.9);
+  font-size: 14px;
+  color: #20242c;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color .15s;
+}
+.searchInput::placeholder { color: rgba(50,50,70,.4); }
+.searchInput:focus { border-color: #fb7185; }
+
+.searchIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: .45;
+  pointer-events: none;
+}
+
+/* 섹션 구분 */
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: rgba(50,50,70,.45);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+/* 연락처 목록 */
+.list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.75);
+  border: 1.5px solid rgba(255,182,193,.15);
+  cursor: pointer;
+  transition: background .13s, border-color .13s, transform .12s;
+  width: 100%;
+  text-align: left;
+}
+.contactItem:hover { background: rgba(255,241,245,.85); border-color: rgba(251,113,133,.3); transform: translateX(2px); }
+.contactItem:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+.contactAvatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(251,113,133,.15), rgba(244,114,182,.2));
+  border: 1.5px solid rgba(251,113,133,.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contactInfo { flex: 1; min-width: 0; }
+.contactName {
+  font-size: 15px; font-weight: 700; color: #20242c;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin: 0 0 3px;
+}
+.contactMeta { font-size: 12px; color: rgba(50,50,70,.5); margin: 0; }
+
+.rolePill {
+  font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 999px;
+  flex-shrink: 0;
+}
+.role-planner { background: rgba(59,130,246,.1); color: #1d4ed8; }
+.role-vendor  { background: rgba(16,185,129,.1); color: #065f46; }
+
+.existingBadge {
+  font-size: 11px; font-weight: 600;
+  padding: 2px 8px; border-radius: 999px;
+  background: rgba(251,113,133,.1); color: #fb7185;
+  flex-shrink: 0;
+}
+
+/* 빈 상태 */
+.empty {
+  padding: 48px 16px;
+  text-align: center;
+}
+.emptyIcon  { font-size: 40px; margin-bottom: 10px; opacity: .4; }
+.emptyTitle { font-size: 15px; font-weight: 700; color: #20242c; margin: 0 0 4px; }
+.emptyDesc  { font-size: 13px; color: rgba(50,50,70,.55); margin: 0; }
+
+/* 로딩 */
+.loadingRow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px;
+  gap: 10px;
+}
+.spinner {
+  width: 24px; height: 24px;
+  border: 2.5px solid rgba(251,113,133,.2);
+  border-top-color: #fb7185;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

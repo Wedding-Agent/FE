@@ -1,0 +1,87 @@
+.card {
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  overflow: hidden;
+  margin: 4px 0;
+  font-size: 12px;
+}
+
+.pending {
+  background: rgba(251, 191, 36, 0.07);
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+.done {
+  background: rgba(34, 197, 94, 0.06);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+}
+
+.spinner {
+  color: #f59e0b;
+  animation: spin 1s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.checkIcon {
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+.emoji { font-size: 13px; }
+
+.label {
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(100, 116, 139, 0.6);
+  flex-shrink: 0;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: rgba(100, 116, 139, 0.5);
+}
+
+.body {
+  padding: 8px 10px;
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.json {
+  font-size: 11px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  color: rgba(50, 50, 70, 0.7);
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}

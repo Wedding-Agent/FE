@@ -1,0 +1,28 @@
+.wrap {
+  display: flex;
+  gap: 0;
+  padding: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.wrap::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.45);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.12s, border-color 0.12s;
+}
+.tab:hover { color: rgba(50, 50, 70, 0.7); }
+
+.active {
+  color: #fb7185;
+  font-weight: 800;
+  border-bottom-color: #fb7185;
+}

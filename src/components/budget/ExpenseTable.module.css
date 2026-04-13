@@ -1,0 +1,167 @@
+.wrap { width: 100%; }
+
+/* ── Category tabs ── */
+.tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  margin-bottom: 14px;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(100, 116, 139, 0.2);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.6);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.tab:hover { background: rgba(251, 113, 133, 0.06); }
+.tabActive {
+  background: rgba(251, 113, 133, 0.12);
+  border-color: rgba(251, 113, 133, 0.45);
+  color: #fb7185;
+}
+
+/* ── Table ── */
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table thead tr {
+  background: rgba(248, 248, 252, 0.9);
+}
+
+.table th {
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(50, 50, 70, 0.55);
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.table td {
+  padding: 11px 12px;
+  color: #20242c;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: rgba(251, 113, 133, 0.03); }
+
+.unexpectedRow td { background: rgba(239, 68, 68, 0.03); }
+
+/* Sort button */
+.sortBtn {
+  background: none;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(50, 50, 70, 0.55);
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+}
+.sortBtn:hover { color: #fb7185; }
+
+/* Cells */
+.dateCell {
+  font-size: 12px;
+  color: rgba(50, 50, 70, 0.6);
+  white-space: nowrap;
+}
+
+.catBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(100, 116, 139, 0.1);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.labelCell {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 100px;
+}
+
+.labelText {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 140px;
+}
+
+.unexpectedIcon { color: #ef4444; flex-shrink: 0; }
+.paperclipIcon  { color: rgba(100, 116, 139, 0.6); flex-shrink: 0; }
+
+.amountCell {
+  font-weight: 700;
+  color: #20242c;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.noteCell {
+  font-size: 12px;
+  color: rgba(50, 50, 70, 0.55);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: rgba(239, 68, 68, 0.5);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.deleteBtn:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+.deleteBtn:disabled { opacity: 0.4; cursor: default; }
+
+/* Empty */
+.empty {
+  padding: 28px 0;
+  text-align: center;
+}
+.empty p {
+  font-size: 14px;
+  color: rgba(50, 50, 70, 0.45);
+  margin: 0;
+}

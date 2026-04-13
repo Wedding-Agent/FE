@@ -1,0 +1,35 @@
+.form { display: flex; flex-direction: column; gap: 2rem; }
+.grid2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 640px) { .grid2 { grid-template-columns: repeat(2, 1fr); } }
+.section { display: flex; flex-direction: column; gap: 1rem; }
+.stack { display: flex; flex-direction: column; gap: 1.25rem; }
+.labelLg { display: block; font-size: 1.1rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem; }
+.labelBase { display: block; font-size: 0.95rem; font-weight: 500; color: #374151; margin-bottom: 0.4rem; }
+.req { color: #f43f5e; }
+.sectionTitle { font-size: 1.1rem; font-weight: 700; color: #1f2937; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(251,113,133,0.2); }
+.input {
+  width: 100%; padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb; border-radius: 0.75rem;
+  font-size: 1rem; transition: border-color 150ms ease;
+  background: rgba(255,255,255,0.8);
+  box-sizing: border-box;
+}
+.input:focus { outline: none; border-color: #fb7185; }
+.textarea {
+  width: 100%; padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb; border-radius: 0.75rem;
+  font-size: 1rem; transition: border-color 150ms ease;
+  resize: none; background: rgba(255,255,255,0.8);
+  box-sizing: border-box;
+}
+.textarea:focus { outline: none; border-color: #fb7185; }
+.nextBtn {
+  width: 100%; height: 56px; border: none; border-radius: 16px;
+  font-size: 17px; font-weight: 800; color: #fff; cursor: pointer;
+  background: linear-gradient(90deg, #fb7185, #f472b6);
+  box-shadow: 0 12px 30px rgba(251,113,133,0.25);
+  transition: transform 0.15s, filter 0.15s;
+  margin-top: 0.5rem;
+}
+.nextBtn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.04); }
+.nextBtn:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }

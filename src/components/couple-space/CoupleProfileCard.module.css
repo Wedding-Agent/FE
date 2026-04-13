@@ -1,0 +1,72 @@
+.card {
+  margin: 0 16px;
+  border-radius: 20px;
+  padding: 24px 20px;
+  background: linear-gradient(135deg, #e879f9 0%, #a855f7 50%, #818cf8 100%);
+  box-shadow: 0 4px 20px rgba(217, 70, 239, 0.35);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.coupleLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ddayBadge {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+}
+
+.namesText {
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 10px 0 4px;
+}
+
+.dateText {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.progressWrap {
+  margin-top: 16px;
+}
+
+.progressLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 6px;
+}
+
+.progressTrack {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+  min-width: 0;
+}

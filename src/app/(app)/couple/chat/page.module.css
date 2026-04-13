@@ -1,0 +1,76 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 16px;
+  background: linear-gradient(180deg, #fff 0%, #fff6f8 45%, #f9fbff 100%);
+}
+
+.main {
+  width: min(640px, 100%);
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.headerLeft { display: flex; flex-direction: column; }
+.pageTitle { font-size: 22px; font-weight: 700; color: #20242c; margin: 0 0 4px; }
+.subTitle  { font-size: 13px; color: rgba(50,50,70,.55); margin: 0; }
+
+.newChatBtn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #fb7185, #f472b6);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(251,113,133,.3);
+  transition: transform .12s, filter .12s;
+  flex-shrink: 0;
+}
+.newChatBtn:hover { transform: scale(1.1); filter: brightness(1.05); }
+
+.list { display: flex; flex-direction: column; gap: 8px; }
+
+.empty {
+  padding: 56px 16px;
+  text-align: center;
+}
+
+.emptyIcon  { font-size: 48px; margin-bottom: 12px; opacity: .45; }
+.emptyTitle { font-size: 17px; font-weight: 700; color: #20242c; margin: 0 0 6px; }
+.emptyDesc  { font-size: 13px; color: rgba(50,50,70,.6); line-height: 1.6; margin: 0 0 20px; }
+
+.emptyStartBtn {
+  padding: 12px 28px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(90deg, #fb7185, #f472b6);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(251,113,133,.25);
+  transition: transform .12s, filter .12s;
+}
+.emptyStartBtn:hover { transform: translateY(-1px); filter: brightness(1.04); }
+
+.errorWrap { padding: 40px 0; text-align: center; }
+.errorText { font-size: 14px; color: #e11d48; margin: 0 0 12px; }
+.retryBtn {
+  padding: 8px 20px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(251,113,133,.4);
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fb7185;
+  cursor: pointer;
+}

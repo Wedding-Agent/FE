@@ -1,0 +1,35 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.agent {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: rgba(109, 40, 217, 0.6);
+}
+
+.agentActive {
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+.arrow {
+  color: rgba(109, 40, 217, 0.4);
+  font-size: 10px;
+}

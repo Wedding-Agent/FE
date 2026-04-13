@@ -1,0 +1,24 @@
+.wrap {
+  display: flex;
+  gap: 4px;
+}
+
+.tab {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(100, 116, 139, 0.2);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.55);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+
+.tab:hover { background: rgba(251, 113, 133, 0.06); }
+
+.active {
+  background: rgba(251, 113, 133, 0.12);
+  border-color: rgba(251, 113, 133, 0.45);
+  color: #fb7185;
+}

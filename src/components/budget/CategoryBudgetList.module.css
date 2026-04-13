@@ -1,0 +1,83 @@
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #20242c;
+  margin: 0 0 14px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 400px) {
+  .row {
+    grid-template-columns: 90px 1fr auto;
+    gap: 8px;
+  }
+}
+
+.rowLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.emoji { font-size: 16px; flex-shrink: 0; }
+
+.catLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #20242c;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowBar { flex: 1; min-width: 0; }
+
+.rowRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  min-width: 0;
+}
+
+.spent {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.planned {
+  font-size: 11px;
+  color: rgba(50, 50, 70, 0.45);
+  white-space: nowrap;
+}
+
+.empty {
+  font-size: 13px;
+  color: rgba(50, 50, 70, 0.5);
+  text-align: center;
+  padding: 12px 0;
+  margin: 0;
+}

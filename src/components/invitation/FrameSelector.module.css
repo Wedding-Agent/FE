@@ -1,0 +1,24 @@
+.grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  outline: none;
+}
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+.card {
+  position: relative; border-radius: 20px; padding: 20px 14px;
+  border: 2px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  cursor: pointer; text-align: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.card:hover { transform: translateY(-2px); }
+.active { border-color: transparent; transform: translateY(-2px); }
+.emoji { font-size: 28px; }
+.cardTitle { font-size: 14px; font-weight: 700; color: #222; }
+.cardDesc { font-size: 12px; color: rgba(50,50,70,0.7); }
+.check {
+  position: absolute; top: 10px; right: 10px;
+  width: 22px; height: 22px; border-radius: 999px;
+  color: #fff; font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}

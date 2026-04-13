@@ -1,0 +1,27 @@
+.wrap {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(50, 50, 70, 0.9);
+  word-break: break-word;
+}
+
+.wrap strong {
+  font-weight: 700;
+  color: #20242c;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #fb7185;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+  animation: blink 0.75s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

@@ -1,0 +1,143 @@
+.wrap {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ── 월 네비 ── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.monthLabel {
+  font-size: 16px;
+  font-weight: 800;
+  color: #20242c;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.navBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: rgba(50, 50, 70, 0.5);
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.navBtn:hover { background: rgba(251, 113, 133, 0.1); color: #fb7185; }
+.navBtn:active { transform: scale(0.93); }
+
+/* ── 요일 헤더 ── */
+.dayHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 6px 4px 4px;
+}
+
+.dayName {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(50, 50, 70, 0.45);
+  text-transform: uppercase;
+}
+.dayName.sun { color: rgba(239, 68, 68, 0.65); }
+.dayName.sat { color: rgba(59, 130, 246, 0.65); }
+
+/* ── 날짜 그리드 ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0 4px 8px;
+  gap: 2px 0;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 2px;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.12s;
+  min-height: 48px;
+}
+.cell:hover:not(.selected) { background: rgba(251, 113, 133, 0.07); }
+.cell:active { transform: scale(0.96); }
+
+.dayNum {
+  font-size: 13px;
+  font-weight: 600;
+  color: #20242c;
+  line-height: 1;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.12s, color 0.12s;
+}
+
+/* 다른 달 날짜 */
+.otherMonth .dayNum { color: rgba(50, 50, 70, 0.2); }
+.otherMonth .dots { opacity: 0.4; }
+
+/* 오늘 */
+.today .dayNum {
+  background: rgba(251, 113, 133, 0.12);
+  color: #fb7185;
+  font-weight: 800;
+}
+
+/* 선택된 날 */
+.selected .dayNum {
+  background: linear-gradient(135deg, #fb7185, #f472b6);
+  color: #fff !important;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(251, 113, 133, 0.4);
+}
+
+/* 일요일 날짜 번호 */
+.cell:nth-child(7n+1) .dayNum { color: rgba(239, 68, 68, 0.8); }
+.cell:nth-child(7n+1).selected .dayNum { color: #fff !important; }
+
+/* 토요일 날짜 번호 */
+.cell:nth-child(7n) .dayNum { color: rgba(59, 130, 246, 0.8); }
+.cell:nth-child(7n).selected .dayNum { color: #fff !important; }
+
+/* ── 이벤트 도트 ── */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotMore {
+  font-size: 8px;
+  font-weight: 700;
+  color: rgba(50, 50, 70, 0.4);
+  line-height: 1;
+}

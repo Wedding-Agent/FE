@@ -1,0 +1,118 @@
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 24px rgba(251, 113, 133, 0.1);
+  border: 1px solid rgba(251, 113, 133, 0.12);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #20242c;
+  margin: 0 0 3px;
+}
+
+.sub {
+  font-size: 12px;
+  color: rgba(50, 50, 70, 0.55);
+  margin: 0;
+}
+
+.editBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(251, 113, 133, 0.35);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fb7185;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+.editBtn:hover { background: rgba(251, 113, 133, 0.07); }
+
+.amounts {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.amountMain {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.amountLabel {
+  font-size: 11px;
+  color: rgba(50, 50, 70, 0.5);
+  font-weight: 500;
+}
+
+.amountValue {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.amountDivider {
+  width: 1px;
+  height: 44px;
+  background: rgba(148, 163, 184, 0.25);
+  flex-shrink: 0;
+}
+
+.amountSub {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.amountSmall {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #20242c;
+  margin-top: 2px;
+}
+
+.barWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.barMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pctBadge {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pctText {
+  font-size: 13px;
+  font-weight: 700;
+}

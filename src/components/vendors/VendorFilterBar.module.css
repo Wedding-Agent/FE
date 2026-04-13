@@ -1,0 +1,170 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border: 1.5px solid rgba(148, 163, 184, 0.25);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(50, 50, 70, 0.65);
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s;
+  flex-shrink: 0;
+}
+.filterBtnOpen, .filterBtn:hover {
+  border-color: rgba(251, 113, 133, 0.45);
+  color: #fb7185;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: #fb7185;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 50%;
+}
+
+.iconDown { transition: transform 0.2s; }
+.iconUp   { transform: rotate(180deg); transition: transform 0.2s; }
+
+.activeChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  background: rgba(251, 113, 133, 0.12);
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fb7185;
+}
+.activeChip button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+}
+.activeChip button:hover { opacity: 1; }
+
+.clearBtn {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px;
+  text-decoration: underline;
+}
+
+/* ── 드롭다운 패널 ── */
+.panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 16px;
+  right: 16px;
+  background: #fff;
+  border: 1.5px solid rgba(148, 163, 184, 0.15);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: 16px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.section { display: flex; flex-direction: column; gap: 8px; }
+
+.sectionLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(50, 50, 70, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.optionChip {
+  padding: 6px 12px;
+  border: 1.5px solid rgba(148, 163, 184, 0.2);
+  border-radius: 99px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.6);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+}
+.optionChip:hover { background: rgba(251, 113, 133, 0.06); border-color: rgba(251, 113, 133, 0.3); color: #fb7185; }
+.optionActive {
+  background: rgba(251, 113, 133, 0.12);
+  border-color: rgba(251, 113, 133, 0.45);
+  color: #fb7185;
+  font-weight: 700;
+}
+
+.rainyBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1.5px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.55);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+  width: fit-content;
+}
+.rainyBtn:hover { background: rgba(96, 165, 250, 0.08); border-color: rgba(96, 165, 250, 0.4); color: #3b82f6; }
+.rainyActive {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.5);
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+.applyBtn {
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(135deg, #fb7185, #f472b6);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity 0.12s;
+}
+.applyBtn:hover { opacity: 0.9; }

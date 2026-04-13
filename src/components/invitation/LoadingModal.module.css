@@ -1,0 +1,61 @@
+.backdrop {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(15, 15, 25, 0.55);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(251, 113, 133, 0.15), transparent 70%);
+}
+.modal {
+  position: relative; z-index: 1;
+  width: min(420px, 92vw); border-radius: 28px; padding: 36px 28px 28px;
+  background: rgba(255,255,255,0.92); border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 32px 80px rgba(15,23,42,0.2);
+  display: flex; flex-direction: column; gap: 24px;
+}
+.header { text-align: center; }
+.badge {
+  display: inline-block; padding: 6px 14px; border-radius: 999px;
+  font-size: 13px; font-weight: 800; letter-spacing: 0.06em;
+  color: #e11d48; background: rgba(254,226,226,0.7);
+  border: 1px solid rgba(251,113,133,0.25); margin-bottom: 12px;
+}
+.title { font-size: 22px; font-weight: 700; color: #1e1e2a; margin: 0 0 8px; }
+.message { font-size: 14px; color: rgba(50,50,70,0.75); line-height: 1.6; margin: 0; }
+.center { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.ring {
+  position: relative; width: 72px; height: 72px;
+  display: flex; align-items: center; justify-content: center;
+}
+.r1, .r2, .r3 {
+  position: absolute; border-radius: 999px;
+  border: 2.5px solid transparent;
+}
+.r1 { inset: 0; border-top-color: #fb7185; animation: spin 1.2s linear infinite; }
+.r2 { inset: 10px; border-top-color: #f472b6; animation: spin 1.8s linear infinite reverse; }
+.r3 { inset: 20px; border-top-color: #fda4af; animation: spin 1.0s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.progressLine {
+  width: 100%; max-width: 220px; height: 6px; border-radius: 999px;
+  background: rgba(148,163,184,0.2); overflow: hidden;
+}
+.progressBar {
+  display: block; height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, #fb7185, #f472b6, #fda4af);
+  animation: progress 2.5s ease-in-out infinite;
+}
+@keyframes progress {
+  0% { width: 0%; margin-left: 0; }
+  50% { width: 70%; margin-left: 0; }
+  100% { width: 10%; margin-left: 90%; }
+}
+.hint { font-size: 13px; color: rgba(100,116,139,0.8); }
+.footer { display: flex; align-items: center; gap: 10px; justify-content: center; }
+.pulseDot {
+  width: 8px; height: 8px; border-radius: 999px; background: #fb7185;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+.footerText { font-size: 13px; font-weight: 600; color: rgba(50,50,70,0.7); }

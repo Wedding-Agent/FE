@@ -1,0 +1,104 @@
+.item {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: opacity 0.2s;
+}
+
+.mainRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── 체크 버튼 ── */
+.checkBtn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(217, 70, 239, 0.35);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+  font-size: 11px;
+  font-weight: 700;
+  color: transparent;
+}
+.checkBtn:hover { border-color: #d946ef; }
+
+.checkBtnDone {
+  background: #d946ef;
+  border-color: #d946ef;
+  color: #fff;
+}
+
+/* ── 카테고리 이모지 ── */
+.emoji {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* ── 제목 ── */
+.title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #20242c;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+
+/* ── 우선순위 도트 ── */
+.priorityDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── 액션 버튼 ── */
+.actionBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: rgba(50, 50, 70, 0.3);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.12s, color 0.12s;
+}
+.actionBtn:hover {
+  background: rgba(217, 70, 239, 0.08);
+  color: #d946ef;
+}
+
+/* ── 마감일 ── */
+.dueDate {
+  font-size: 11px;
+  color: rgba(50, 50, 70, 0.4);
+  margin: 0;
+  padding-left: 30px; /* checkbox(22) + gap(8) = 30px */
+}
+
+/* ── 완료 상태 ── */
+.done { opacity: 0.65; }
+.done .title {
+  text-decoration: line-through;
+  color: rgba(50, 50, 70, 0.4);
+}

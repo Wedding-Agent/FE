@@ -1,0 +1,24 @@
+.wrap {
+  padding: 48px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.icon { font-size: 48px; opacity: .55; }
+
+.title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #20242c;
+  margin: 0;
+}
+
+.desc {
+  font-size: 13px;
+  color: rgba(50,50,70,.6);
+  margin: 0;
+  line-height: 1.6;
+}
