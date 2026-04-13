@@ -79,10 +79,8 @@ export const initialInvitationData: InvitationData = {
 // ── Helpers ────────────────────────────────────────────────────────────────
 function setByPath(obj: Record<string, unknown>, path: string, value: unknown): Record<string, unknown> {
   const keys = path.split('.');
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const next: any = Array.isArray(obj) ? [...obj] : { ...obj };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let cur: any = next;
+  const next: any = Array.isArray(obj) ? [...obj] : { ...obj }; // eslint-disable-line
+  let cur: any = next; // eslint-disable-line
   for (let i = 0; i < keys.length - 1; i++) {
     const k = keys[i];
     const prevVal = cur[k];

@@ -81,11 +81,16 @@ export function LoginForm() {
         type="submit"
         disabled={isPending}
         className={cn(
-          'w-full py-3.5 rounded-xl font-semibold text-white text-sm transition-all',
-          'bg-brand hover:bg-[#E63956] active:scale-[0.98]',
-          'disabled:opacity-60 disabled:cursor-not-allowed',
+          'w-full py-3.5 font-semibold text-white text-sm transition-all',
+          'active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed',
           'flex items-center justify-center gap-2'
         )}
+        style={{
+          borderRadius: 16,
+          background: 'var(--gradient-brand)',
+          boxShadow: 'var(--shadow-brand)',
+          border: 'none',
+        }}
       >
         {isPending && <Loader2 size={16} className="animate-spin" />}
         로그인
@@ -99,12 +104,14 @@ export function LoginForm() {
       </p>
 
       {/* 개발 편의용 mock 계정 안내 */}
-      <div className="mt-4 p-3 rounded-xl bg-blue-50 border border-blue-100 text-xs text-blue-600 space-y-0.5">
-        <p className="font-semibold">테스트 계정</p>
-        <p>커플: couple@test.com / 비밀번호1234</p>
-        <p>플래너: planner@test.com / 비밀번호1234</p>
-        <p>업체: vendor@test.com / 비밀번호1234</p>
-      </div>
+      {process.env.NODE_ENV === 'development' && (
+        <div className="mt-4 p-3 rounded-xl bg-blue-50 border border-blue-100 text-xs text-blue-600 space-y-0.5">
+          <p className="font-semibold">테스트 계정</p>
+          <p>커플: couple@test.com / 비밀번호1234</p>
+          <p>플래너: planner@test.com / 비밀번호1234</p>
+          <p>업체: vendor@test.com / 비밀번호1234</p>
+        </div>
+      )}
     </form>
   );
 }

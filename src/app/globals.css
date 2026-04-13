@@ -11,8 +11,10 @@
     --text: #0F172A;
     --text-muted: #64748B;
     --border: #E5E7EB;
-    --radius-card: 20px;
-    --radius-icon: 16px;
+    --radius-card: 24px;
+    --radius-icon: 18px;
+    --gradient-brand: linear-gradient(135deg, #FF4D6D, #c026d3);
+    --shadow-brand: 0 4px 16px rgba(255,77,109,0.35);
   }
 
   .dark {

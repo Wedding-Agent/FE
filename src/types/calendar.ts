@@ -18,36 +18,33 @@ export const CATEGORY_EMOJI: Record<EventCategory, string> = {
 };
 
 export const CATEGORY_COLOR: Record<EventCategory, string> = {
-  DDAY:     '#fb7185', // rose
-  MEETING:  '#60a5fa', // blue
-  TASK:     '#34d399', // emerald
-  REMINDER: '#fbbf24', // amber
-  OTHER:    '#94a3b8', // slate
+  DDAY:     '#fb7185',
+  MEETING:  '#60a5fa',
+  TASK:     '#34d399',
+  REMINDER: '#fbbf24',
+  OTHER:    '#94a3b8',
 };
 
 export const ALL_CATEGORIES: EventCategory[] = ['DDAY', 'MEETING', 'TASK', 'REMINDER', 'OTHER'];
 
-// ── 캘린더 이벤트 ────────────────────────────────────────────────────────────
 export interface CalendarEvent {
   id: string;
   title: string;
-  date: string;          // YYYY-MM-DD
+  date: string;
   category: EventCategory;
   note?: string;
   createdAt: string;
 }
 
-// ── API 응답 ─────────────────────────────────────────────────────────────────
 export interface CalendarEventsResponse {
   events: CalendarEvent[];
 }
 
 export interface WeddingInfo {
-  weddingDate: string | null; // YYYY-MM-DD, null이면 미설정
+  weddingDate: string | null;
   partnerNickname: string;
 }
 
-// ── 날짜 유틸 ────────────────────────────────────────────────────────────────
 export function toDateKey(date: Date): string {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -60,7 +57,6 @@ export function parseDateKey(key: string): Date {
   return new Date(y, m - 1, d);
 }
 
-/** YYYY-MM-DD → "4월 12일 (토)" */
 export function formatDateLabel(dateKey: string): string {
   const date = parseDateKey(dateKey);
   const days = ['일', '월', '화', '수', '목', '금', '토'];
@@ -70,7 +66,6 @@ export function formatDateLabel(dateKey: string): string {
   return `${m}월 ${d}일 (${w})`;
 }
 
-/** 웨딩 D-Day 계산: 양수면 D-N (미래), 음수면 D+N (과거) */
 export function calcDDay(weddingDate: string): number {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
