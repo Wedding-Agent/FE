@@ -1,0 +1,128 @@
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(46, 123, 255, 0.12);
+  border-radius: 20px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+}
+
+/* 상단 */
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.customerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.customerName {
+  font-size: 14px;
+  font-weight: 800;
+  color: #1e2433;
+}
+
+.phone {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.statusBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 중간 */
+.middle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.templateChip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2E7BFF;
+  background: rgba(46, 123, 255, 0.08);
+  border-radius: 6px;
+  padding: 2px 8px;
+  align-self: flex-start;
+}
+
+.messagePreview {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-line;
+}
+
+/* 하단 */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.timeLabel {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sendNowBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #2E7BFF, #1a5fd4);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.12s;
+  box-shadow: 0 2px 8px rgba(46, 123, 255, 0.3);
+}
+.sendNowBtn:hover { opacity: 0.9; }
+.sendNowBtn:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
+
+.deleteBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(148, 163, 184, 0.25);
+  border-radius: 50%;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.deleteBtn:hover { background: rgba(239, 68, 68, 0.08); color: #ef4444; border-color: rgba(239, 68, 68, 0.3); }
+.deleteBtn:disabled { opacity: 0.4; cursor: default; }
