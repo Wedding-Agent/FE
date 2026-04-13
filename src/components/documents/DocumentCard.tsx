@@ -13,9 +13,10 @@ const CATEGORY_EMOJI: Record<string, string> = {
 
 interface Props {
   doc: Document;
+  basePath?: string; // default: '/couple/documents'
 }
 
-export function DocumentCard({ doc }: Props) {
+export function DocumentCard({ doc, basePath = '/couple/documents' }: Props) {
   const router = useRouter();
   const isProcessing = doc.status === 'PROCESSING' || doc.status === 'UPLOADING';
   const isFailed = doc.status === 'FAILED';
@@ -26,10 +27,10 @@ export function DocumentCard({ doc }: Props) {
   return (
     <article
       className={styles.card}
-      onClick={() => router.push(`/couple/documents/${doc.id}`)}
+      onClick={() => router.push(`${basePath}/${doc.id}`)}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && router.push(`/couple/documents/${doc.id}`)}
+      onKeyDown={(e) => e.key === 'Enter' && router.push(`${basePath}/${doc.id}`)}
       aria-label={`${doc.fileName} 문서 보기`}
     >
       <div className={styles.thumb}>
