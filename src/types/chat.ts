@@ -5,9 +5,7 @@ export type ChatMessageStatus = 'SENDING' | 'SENT' | 'FAILED';
 export interface ChatRoom {
   roomId: string;
   type: ChatRoomType;
-  /** 상대방 이름 또는 그룹 이름 */
   title: string;
-  /** 상대방 역할 (커플/플래너/업체) */
   partnerRole?: 'couple' | 'planner' | 'vendor';
   lastMessageContent: string | null;
   lastMessageAt: string | null;
@@ -24,7 +22,7 @@ export interface ChatMessageSender {
 export interface ChatMessage {
   messageId: string;
   roomId: string;
-  sender: ChatMessageSender | null;  // null이면 시스템 메시지
+  sender: ChatMessageSender | null;
   type: ChatMessageType;
   content: string | null;
   status?: ChatMessageStatus;
@@ -38,7 +36,6 @@ export interface ChatRoomListResponse {
   lastId?: string;
 }
 
-/** 새 대화 상대 (플래너·업체 연락처) */
 export interface ChatContact {
   userId: string;
   nickname: string;
