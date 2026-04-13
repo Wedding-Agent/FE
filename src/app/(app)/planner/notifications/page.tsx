@@ -5,13 +5,13 @@ import { useNotifications, useMarkAllRead } from '@/features/notifications/hooks
 import { NotificationItem } from '@/components/notifications/NotificationItem';
 import styles from './page.module.css';
 
-export default function NotificationsPage() {
-  const { data, isError, refetch } = useNotifications('couple');
-  const markAll = useMarkAllRead('couple');
+export default function PlannerNotificationsPage() {
+  const { data, isError, refetch } = useNotifications('planner');
+  const markAll = useMarkAllRead('planner');
   const notifications = data?.notifications ?? [];
   const hasUnread = notifications.some((n) => !n.isRead);
 
-  // Refetch on mount so unread count badge updates immediately
+  // 마운트 시 미읽음 뱃지 즉시 갱신
   useEffect(() => { refetch(); }, [refetch]);
 
   return (
