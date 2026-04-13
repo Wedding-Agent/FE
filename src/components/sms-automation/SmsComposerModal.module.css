@@ -1,0 +1,251 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 448px;
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  padding: 0 0 env(safe-area-inset-bottom, 16px);
+  max-height: 92dvh;
+  overflow-y: auto;
+  animation: slideUp 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.handle {
+  width: 36px;
+  height: 4px;
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.headerTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: #20242c;
+  margin: 0;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 50%;
+  color: rgba(50, 50, 70, 0.5);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.closeBtn:hover { background: rgba(148, 163, 184, 0.22); }
+
+.form {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(50, 50, 70, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.charCount {
+  font-size: 12px;
+  color: #94a3b8;
+}
+.charCountOver { color: #ef4444; font-weight: 700; }
+
+.select {
+  height: 44px;
+  border: 1.5px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #20242c;
+  background: #fff;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+.select:focus {
+  border-color: rgba(46, 123, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(46, 123, 255, 0.08);
+}
+
+.input {
+  height: 44px;
+  border: 1.5px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #20242c;
+  background: #fff;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+.input:focus {
+  border-color: rgba(46, 123, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(46, 123, 255, 0.08);
+}
+
+/* 템플릿 칩 그리드 */
+.templateGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.templateChip {
+  height: 36px;
+  border: 1.5px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.6);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
+}
+.templateChip:hover { background: rgba(148, 163, 184, 0.08); }
+
+.templateChipActive {
+  background: rgba(46, 123, 255, 0.1) !important;
+  border-color: #2E7BFF !important;
+  color: #2E7BFF !important;
+  font-weight: 700;
+}
+
+/* 발송 방식 */
+.timingRow {
+  display: flex;
+  gap: 8px;
+}
+
+.timingChip {
+  flex: 1;
+  height: 40px;
+  border: 1.5px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(50, 50, 70, 0.6);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.timingChip:hover { background: rgba(148, 163, 184, 0.08); }
+
+.timingChipActive {
+  background: rgba(46, 123, 255, 0.1) !important;
+  border-color: #2E7BFF !important;
+  color: #2E7BFF !important;
+  font-weight: 700;
+}
+
+/* 메시지 textarea */
+.textarea {
+  border: 1.5px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #20242c;
+  background: #fff;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  line-height: 1.6;
+  transition: border-color 0.15s;
+}
+.textarea:focus {
+  border-color: rgba(46, 123, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(46, 123, 255, 0.08);
+}
+
+/* 하단 버튼 */
+.footer {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.cancelBtn {
+  flex: 1;
+  height: 46px;
+  border: 1.5px solid rgba(100, 116, 139, 0.2);
+  border-radius: 14px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(50, 50, 70, 0.5);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.cancelBtn:hover { background: rgba(100, 116, 139, 0.06); }
+.cancelBtn:disabled { opacity: 0.5; cursor: default; }
+
+.sendBtn {
+  flex: 2;
+  height: 46px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2E7BFF, #1a5fd4);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(46, 123, 255, 0.35);
+  transition: opacity 0.12s, transform 0.1s;
+}
+.sendBtn:hover { opacity: 0.92; }
+.sendBtn:active { transform: scale(0.98); }
+.sendBtn:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
