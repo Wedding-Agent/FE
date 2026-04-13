@@ -1,0 +1,279 @@
+.page {
+  min-height: 100dvh;
+  background: #f0f4ff;
+  padding-bottom: 80px;
+}
+
+/* 헤더 */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 16px 12px;
+  position: sticky;
+  top: 0;
+  background: #f0f4ff;
+  z-index: 10;
+}
+
+.backBtn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(46, 123, 255, 0.1);
+  color: #2E7BFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+.backBtn:hover { background: rgba(46, 123, 255, 0.18); }
+
+.headerTitle {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 800;
+  color: #1e2433;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ddayBadge {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 기본 정보 카드 */
+.infoCard {
+  margin: 0 16px 16px;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(148, 163, 184, 0.15);
+}
+
+.infoCardTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.colorDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.infoName {
+  font-size: 15px;
+  font-weight: 800;
+  color: #1e2433;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 4px 0;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 16px;
+}
+
+.infoIcon {
+  color: #2E7BFF;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.infoIconText {
+  font-size: 14px;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.infoLabel {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.infoValue {
+  font-size: 13px;
+  color: #1e2433;
+  font-weight: 700;
+}
+
+.infoMemo {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* 섹션 공통 */
+.section {
+  margin: 0 16px 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 800;
+  color: #1e2433;
+  margin: 0;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 20px;
+  background: #2E7BFF;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.12s;
+}
+.addBtn:hover { opacity: 0.9; }
+
+.calendarLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #2E7BFF;
+  font-weight: 600;
+  text-decoration: none;
+}
+.calendarLink:hover { text-decoration: underline; }
+
+/* 계약 목록 */
+.contractList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.emptyContracts {
+  background: #fff;
+  border: 1.5px dashed rgba(148, 163, 184, 0.3);
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.emptyContracts p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.emptyAddBtn {
+  border: none;
+  background: transparent;
+  color: #2E7BFF;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* 이벤트 목록 */
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eventItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1.5px solid rgba(148, 163, 184, 0.12);
+}
+
+.eventDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.eventEmoji { font-size: 14px; line-height: 1; }
+
+.eventDate {
+  font-size: 12px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.eventTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e2433;
+  flex: 1;
+}
+
+.emptyEvents {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.emptyEvents p { font-size: 13px; color: #94a3b8; margin: 0; }
+
+/* 스켈레톤 */
+.skeletonHero {
+  margin: 0 16px 16px;
+  height: 160px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, rgba(148,163,184,0.1) 0%, rgba(148,163,184,0.2) 50%, rgba(148,163,184,0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+.skeletonSection {
+  margin: 0 16px;
+  height: 200px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, rgba(148,163,184,0.1) 0%, rgba(148,163,184,0.2) 50%, rgba(148,163,184,0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
