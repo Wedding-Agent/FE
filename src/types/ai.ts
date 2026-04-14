@@ -199,3 +199,12 @@ export const QUICK_ACTIONS: QuickAction[] = [
     prompt: '웨딩홀 업체를 찾아줘',
   },
 ];
+
+export const VENDOR_QUICK_ACTIONS: QuickAction[] = [
+  { id: 'reservations', label: '예약 현황',      emoji: '📅', prompt: '오늘 이후 예약 현황을 알려줘' },
+  { id: 'revenue',      label: '매출 분석',      emoji: '💰', prompt: '이번 달 매출 현황을 분석해줘' },
+  { id: 'promotion',    label: '홍보 문구 초안',  emoji: '📢', prompt: '인스타그램용 업체 홍보 문구를 작성해줘' },
+  { id: 'analytics',   label: '경쟁사 비교',     emoji: '📊', prompt: '같은 카테고리 경쟁 업체와 비교해줘' },
+  { id: 'review',       label: '리뷰 관리',      emoji: '⭐', prompt: '최근 리뷰를 요약하고 개선점을 알려줘' },
+  { id: 'contract',     label: '계약서 검토',     emoji: '📄', prompt: '업로드된 계약서를 검토해줘' },
+];
