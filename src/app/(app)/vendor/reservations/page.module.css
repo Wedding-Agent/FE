@@ -1,0 +1,175 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 120px;
+  background: #fff8f4;
+}
+
+.main {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.card {
+  border-radius: 28px;
+  padding: 28px 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 138, 61, 0.12);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+.header { margin-bottom: 20px; }
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #20242c;
+  margin: 0 0 4px;
+}
+
+.subTitle {
+  font-size: 14px;
+  color: rgba(50, 50, 70, 0.6);
+  margin: 0;
+}
+
+/* 탭 */
+.tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1.5px solid rgba(148, 163, 184, 0.15);
+  margin-bottom: 20px;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1.5px;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tab:hover { color: #FF8A3D; }
+
+.tabActive {
+  color: #FF8A3D !important;
+  border-bottom-color: #FF8A3D !important;
+}
+
+.tabCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: rgba(255, 138, 61, 0.12);
+  color: #FF8A3D;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* 목록 */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 예약 카드 */
+.reservationCard {
+  border-radius: 16px;
+  padding: 16px;
+  background: #fafafa;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.customerInfo { flex: 1; }
+
+.customerName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #20242c;
+  margin: 0 0 2px;
+}
+
+.serviceName {
+  font-size: 13px;
+  color: rgba(50, 50, 70, 0.6);
+  margin: 0;
+}
+
+.statusBadge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: rgba(50, 50, 70, 0.7);
+}
+
+.metaIcon { font-size: 14px; }
+
+.note {
+  font-size: 12px;
+  color: rgba(50, 50, 70, 0.5);
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 138, 61, 0.05);
+}
+
+/* 빈 상태 */
+.emptyWrap {
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.emptyIcon { font-size: 40px; line-height: 1; }
+
+.emptyText {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 0;
+}

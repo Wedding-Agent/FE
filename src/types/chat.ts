@@ -39,7 +39,7 @@ export interface ChatRoomListResponse {
 export interface ChatContact {
   userId: string;
   nickname: string;
-  role: 'planner' | 'vendor';
+  role: 'couple' | 'planner' | 'vendor';
   existingRoomId: string | null;
 }
 

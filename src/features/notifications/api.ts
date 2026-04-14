@@ -157,9 +157,84 @@ const MOCK_NOTIFICATIONS_PLANNER: Notification[] = [
   },
 ];
 
+const MOCK_NOTIFICATIONS_VENDOR: Notification[] = [
+  {
+    notificationId: 'v-noti-1',
+    sender: { senderId: 'customer-1', senderName: '김민수' },
+    category: 'CHAT',
+    type: 'NEW_MESSAGE',
+    content: '김민수 고객님이 새 메시지를 보냈어요: "견적서 확인 부탁드립니다 🙏"',
+    targetPath: '/vendor/chats/room-1',
+    createdAt: minsAgo(5),
+    isRead: false,
+  },
+  {
+    notificationId: 'v-noti-2',
+    sender: null,
+    category: 'DOCUMENT',
+    type: 'DOCUMENT_DONE',
+    content: '"웨딩홀_계약서.pdf" 문서 분석이 완료됐어요. 추출된 정보를 확인해보세요.',
+    targetPath: '/vendor/contracts/mock-1',
+    createdAt: minsAgo(20),
+    isRead: false,
+  },
+  {
+    notificationId: 'v-noti-3',
+    sender: { senderId: 'planner-1', senderName: '박플래너' },
+    category: 'CHAT',
+    type: 'NEW_MESSAGE',
+    content: '박플래너님이 새 메시지를 보냈어요: "5월 예약 가능한지 확인 부탁드려요"',
+    targetPath: '/vendor/chats/room-2',
+    createdAt: hoursAgo(1),
+    isRead: false,
+  },
+  {
+    notificationId: 'v-noti-4',
+    sender: null,
+    category: 'SYSTEM',
+    type: 'SYSTEM_NOTICE',
+    content: '이번 달 예약 확정 건수가 지난달 대비 20% 증가했어요 📈',
+    targetPath: '/vendor/revenue',
+    createdAt: hoursAgo(4),
+    isRead: true,
+  },
+  {
+    notificationId: 'v-noti-5',
+    sender: { senderId: 'customer-2', senderName: '이수진' },
+    category: 'CHAT',
+    type: 'NEW_MESSAGE',
+    content: '이수진 고객님이 새 메시지를 보냈어요: "드레스 피팅 날짜 변경 가능한가요?"',
+    targetPath: '/vendor/chats/room-3',
+    createdAt: daysAgo(1),
+    isRead: true,
+  },
+  {
+    notificationId: 'v-noti-6',
+    sender: null,
+    category: 'DOCUMENT',
+    type: 'DOCUMENT_FAILED',
+    content: '"영수증_4월.png" 문서 분석에 실패했어요. 다시 업로드해주세요.',
+    targetPath: '/vendor/contracts',
+    createdAt: daysAgo(2),
+    isRead: true,
+  },
+  {
+    notificationId: 'v-noti-7',
+    sender: null,
+    category: 'SYSTEM',
+    type: 'SYSTEM_NOTICE',
+    content: 'Promise Marry 업체 대시보드에 오신 걸 환영해요! 예약 관리를 시작해보세요 🏪',
+    targetPath: '/vendor',
+    createdAt: daysAgo(3),
+    isRead: true,
+  },
+];
+
 // 역할별 Mock 데이터 라우팅 (기본: couple)
 function getMockNotifications(role?: string): Notification[] {
-  return role === 'planner' ? MOCK_NOTIFICATIONS_PLANNER : MOCK_NOTIFICATIONS_COUPLE;
+  if (role === 'planner') return MOCK_NOTIFICATIONS_PLANNER;
+  if (role === 'vendor')  return MOCK_NOTIFICATIONS_VENDOR;
+  return MOCK_NOTIFICATIONS_COUPLE;
 }
 
 // 역할별 읽음 상태 관리
@@ -169,6 +244,9 @@ const readSets: Record<string, Set<string>> = {
   ),
   planner: new Set<string>(
     MOCK_NOTIFICATIONS_PLANNER.filter((n) => n.isRead).map((n) => n.notificationId),
+  ),
+  vendor: new Set<string>(
+    MOCK_NOTIFICATIONS_VENDOR.filter((n) => n.isRead).map((n) => n.notificationId),
   ),
 };
 
