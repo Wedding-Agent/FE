@@ -10,8 +10,45 @@ import type {
   AgentType,
 } from '@/types/ai';
 
-// Navigation suggestions derived from tool results
-const NAV_SUGGESTIONS: Record<string, NavigationSuggestion[]> = {
+type AIChatRole = 'couple' | 'planner' | 'vendor';
+
+// ── 역할별 웰컴 메시지 ──────────────────────────────────────────
+const WELCOME_TEXT: Record<AIChatRole, string> = {
+  couple:
+    '안녕하세요! 저는 Promise Marry의 AI 웨딩 비서예요 💍\n\n' +
+    '예산 분석, 문서 관리, 업체 추천, 체크리스트 등 웨딩 준비의 모든 것을 도와드릴 수 있어요.\n\n' +
+    '무엇이든 편하게 물어보세요!',
+  planner:
+    '안녕하세요! AI 플래너 비서예요 📋\n\n' +
+    '고객 관리, 일정 조율, 계약서 검토, SMS 발송 등 플래너 업무 자동화를 도와드릴 수 있어요.\n\n' +
+    '무엇이든 편하게 물어보세요!',
+  vendor:
+    '안녕하세요! AI 업체 비서예요 🏪\n\n' +
+    '예약 관리, 매출 분석, 홍보 문구 작성, 경쟁사 비교 등 업체 운영의 모든 것을 도와드릴 수 있어요.\n\n' +
+    '무엇이든 편하게 물어보세요!',
+};
+
+// ── 역할별 웰컴 바로가기 링크 ───────────────────────────────────
+const WELCOME_SUGGESTIONS: Record<AIChatRole, NavigationSuggestion[]> = {
+  couple:  [
+    { label: '예산 관리',    href: '/couple/budget' },
+    { label: '문서 보관함',  href: '/couple/documents' },
+    { label: '커뮤니티',     href: '/couple/community' },
+  ],
+  planner: [
+    { label: '고객 관리',    href: '/planner/customers' },
+    { label: '캘린더',       href: '/planner/calendar' },
+    { label: '계약서 보관함', href: '/planner/contracts' },
+  ],
+  vendor:  [
+    { label: '예약 관리',    href: '/vendor/reservations' },
+    { label: '매출 현황',    href: '/vendor/revenue' },
+    { label: '홍보 멘트',    href: '/vendor/promotions' },
+  ],
+};
+
+// ── 역할별 Tool 결과 → 페이지 네비게이션 제안 ──────────────────
+const NAV_SUGGESTIONS_COUPLE: Record<string, NavigationSuggestion[]> = {
   get_budget_summary: [
     { label: '예산 관리 페이지로', href: '/couple/budget', description: '예산 설정 및 지출 추가' },
   ],
@@ -36,33 +73,42 @@ const NAV_SUGGESTIONS: Record<string, NavigationSuggestion[]> = {
   ],
 };
 
+const NAV_SUGGESTIONS_PLANNER: Record<string, NavigationSuggestion[]> = {
+  get_documents:      [{ label: '계약서 보관함', href: '/planner/contracts', description: '계약서·영수증 관리' }],
+  get_notifications:  [{ label: '알림 확인', href: '/planner/notifications' }],
+  get_chat_rooms:     [{ label: '채팅 열기', href: '/planner/chats' }],
+  get_calendar_events:[{ label: '캘린더 보기', href: '/planner/calendar' }],
+};
+
+const NAV_SUGGESTIONS_VENDOR: Record<string, NavigationSuggestion[]> = {
+  get_documents:      [{ label: '계약서 보관함', href: '/vendor/contracts', description: '계약서 관리' }],
+  get_notifications:  [{ label: '알림 확인', href: '/vendor/notifications' }],
+  get_chat_rooms:     [{ label: '채팅 열기', href: '/vendor/chats' }],
+  get_calendar_events:[{ label: '예약 현황', href: '/vendor/reservations', description: '예약 목록 보기' }],
+};
+
+const NAV_SUGGESTIONS_BY_ROLE: Record<AIChatRole, Record<string, NavigationSuggestion[]>> = {
+  couple:  NAV_SUGGESTIONS_COUPLE,
+  planner: NAV_SUGGESTIONS_PLANNER,
+  vendor:  NAV_SUGGESTIONS_VENDOR,
+};
+
 function createId(): string {
   return `msg-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
-export function useAIChat() {
-  const [messages, setMessages] = useState<AIMessage[]>([
-    {
-      id: 'welcome',
-      role: 'assistant',
-      parts: [
-        {
-          type: 'text',
-          text:
-            '안녕하세요! 저는 Promise Marry의 AI 웨딩 비서예요 💍\n\n' +
-            '예산 분석, 문서 관리, 업체 추천, 체크리스트 등 웨딩 준비의 모든 것을 도와드릴 수 있어요.\n\n' +
-            '무엇이든 편하게 물어보세요!',
-          streaming: false,
-        },
-      ],
-      suggestions: [
-        { label: '예산 관리', href: '/couple/budget' },
-        { label: '문서 보관함', href: '/couple/documents' },
-        { label: '커뮤니티', href: '/couple/community' },
-      ],
-      createdAt: new Date().toISOString(),
-    },
-  ]);
+function buildWelcomeMessage(role: AIChatRole): AIMessage {
+  return {
+    id: 'welcome',
+    role: 'assistant',
+    parts: [{ type: 'text', text: WELCOME_TEXT[role], streaming: false }],
+    suggestions: WELCOME_SUGGESTIONS[role],
+    createdAt: new Date().toISOString(),
+  };
+}
+
+export function useAIChat(role: AIChatRole = 'couple') {
+  const [messages, setMessages] = useState<AIMessage[]>(() => [buildWelcomeMessage(role)]);
   const [isStreaming, setIsStreaming] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -182,9 +228,10 @@ export function useAIChat() {
 
         else if (event.type === 'done') {
           // Mark text as done streaming, add navigation suggestions
+          const navMap = NAV_SUGGESTIONS_BY_ROLE[role];
           const suggestions: NavigationSuggestion[] = [];
           calledTools.forEach((tool) => {
-            const navs = NAV_SUGGESTIONS[tool];
+            const navs = navMap[tool];
             if (navs) suggestions.push(...navs);
           });
 
@@ -233,7 +280,7 @@ export function useAIChat() {
       );
       setIsStreaming(false);
     }
-  }, [isStreaming, messages]);
+  }, [isStreaming, messages, role]);
 
   const stopStream = useCallback(() => {
     abortRef.current?.abort();
@@ -241,8 +288,8 @@ export function useAIChat() {
   }, []);
 
   const clearHistory = useCallback(() => {
-    setMessages((prev) => prev.filter((m) => m.id === 'welcome'));
-  }, []);
+    setMessages([buildWelcomeMessage(role)]);
+  }, [role]);
 
   return { messages, isStreaming, sendMessage, stopStream, clearHistory };
 }

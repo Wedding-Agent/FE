@@ -5,11 +5,11 @@ import { useAIChat } from '@/features/ai/hooks';
 import { MessageBubble } from '@/components/ai/MessageBubble';
 import { QuickActions } from '@/components/ai/QuickActions';
 import { ChatInput } from '@/components/ai/ChatInput';
-// couple/ai와 동일한 레이아웃·스타일 재사용
-import styles from '@/app/(app)/couple/ai/page.module.css';
+import { VENDOR_QUICK_ACTIONS } from '@/types/ai';
+import styles from './page.module.css';
 
-export default function PlannerAIPage() {
-  const { messages, isStreaming, sendMessage, stopStream, clearHistory } = useAIChat('planner');
+export default function VendorAIPage() {
+  const { messages, isStreaming, sendMessage, stopStream, clearHistory } = useAIChat('vendor');
   const scrollRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -28,10 +28,10 @@ export default function PlannerAIPage() {
     <div className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.headerTitle}>
-          <span className={styles.headerEmoji} aria-hidden="true">📋</span>
+          <span className={styles.headerEmoji} aria-hidden="true">🏪</span>
           <div className={styles.headerText}>
-            <p className={styles.headerName}>AI 플래너 비서</p>
-            <p className={styles.headerSub}>업무 자동화를 도와드려요</p>
+            <p className={styles.headerName}>AI 업체 비서</p>
+            <p className={styles.headerSub}>업체 운영을 도와드려요</p>
           </div>
         </div>
         {messages.length > 1 && (
@@ -47,7 +47,11 @@ export default function PlannerAIPage() {
         ))}
         {showQuickActions && (
           <div className={styles.quickWrap}>
-            <QuickActions onSelect={sendMessage} disabled={isStreaming} />
+            <QuickActions
+              onSelect={sendMessage}
+              actions={VENDOR_QUICK_ACTIONS}
+              disabled={isStreaming}
+            />
           </div>
         )}
         <div ref={bottomRef} />
@@ -57,7 +61,7 @@ export default function PlannerAIPage() {
         {isStreaming && (
           <div className={styles.streamingLabel}>
             <span className={styles.streamingDot} aria-hidden="true" />
-            AI 플래너 비서가 답변 중이에요...
+            AI 업체 비서가 답변 중이에요...
           </div>
         )}
         <ChatInput onSend={sendMessage} onStop={stopStream} isStreaming={isStreaming} />

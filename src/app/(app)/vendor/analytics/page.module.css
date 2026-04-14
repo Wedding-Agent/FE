@@ -1,0 +1,200 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 120px;
+  background: #fff8f4;
+}
+
+.main {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  border-radius: 28px;
+  padding: 24px 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 138, 61, 0.12);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #20242c;
+  margin: 0;
+}
+
+.sectionPeriod {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* 스탯 그리드 */
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 560px) {
+  .statGrid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.statCard {
+  border-radius: 16px;
+  padding: 16px 12px;
+  background: #fafafa;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.statIcon { font-size: 24px; line-height: 1; margin-bottom: 4px; }
+
+.statValue {
+  font-size: 22px;
+  font-weight: 800;
+  color: #20242c;
+  margin: 0;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: rgba(50, 50, 70, 0.55);
+  margin: 0;
+}
+
+.statDelta {
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* 테이블 */
+.tableWrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+}
+
+.th {
+  padding: 10px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-align: left;
+  border-bottom: 1.5px solid rgba(148, 163, 184, 0.15);
+  white-space: nowrap;
+}
+
+.tr {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  transition: background 0.1s;
+}
+.tr:hover { background: rgba(255, 138, 61, 0.03); }
+.tr:last-child { border-bottom: none; }
+
+.trHighlight {
+  background: rgba(255, 138, 61, 0.06) !important;
+}
+
+.tdRank {
+  padding: 12px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.tdName {
+  padding: 12px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #20242c;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.td {
+  padding: 12px 8px;
+  font-size: 13px;
+  color: rgba(50, 50, 70, 0.7);
+  white-space: nowrap;
+}
+
+.meBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #FF8A3D;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* 키워드 순위 */
+.keywordList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.keywordRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 8px;
+  border-radius: 10px;
+  transition: background 0.1s;
+}
+.keywordRow:hover { background: rgba(255, 138, 61, 0.04); }
+
+.keywordText {
+  font-size: 14px;
+  color: #20242c;
+  font-weight: 500;
+}
+
+.keywordRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.keywordRank {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FF8A3D;
+  min-width: 32px;
+  text-align: right;
+}
+
+.keywordDelta {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 24px;
+  text-align: right;
+}
