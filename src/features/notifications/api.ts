@@ -11,7 +11,7 @@ const minsAgo = (m: number) => new Date(Date.now() - m * 60_000).toISOString();
 const hoursAgo = (h: number) => new Date(Date.now() - h * 3_600_000).toISOString();
 const daysAgo = (d: number) => new Date(Date.now() - d * 86_400_000).toISOString();
 
-const MOCK_NOTIFICATIONS: Notification[] = [
+const MOCK_NOTIFICATIONS_COUPLE: Notification[] = [
   {
     notificationId: 'noti-1',
     sender: { senderId: 'planner-1', senderName: '김플래너' },
@@ -84,17 +84,102 @@ const MOCK_NOTIFICATIONS: Notification[] = [
   },
 ];
 
-// mock 읽음 상태 (페이지 방문 시 업데이트)
-const readSet = new Set<string>(
-  MOCK_NOTIFICATIONS.filter((n) => n.isRead).map((n) => n.notificationId),
-);
+const MOCK_NOTIFICATIONS_PLANNER: Notification[] = [
+  {
+    notificationId: 'p-noti-1',
+    sender: { senderId: 'customer-1', senderName: '김민수' },
+    category: 'CHAT',
+    type: 'NEW_MESSAGE',
+    content: '김민수 고객님이 새 메시지를 보냈어요: "웨딩홀 투어 일정 확인해주실 수 있나요?"',
+    targetPath: '/planner/chats/room-1',
+    createdAt: minsAgo(3),
+    isRead: false,
+  },
+  {
+    notificationId: 'p-noti-2',
+    sender: null,
+    category: 'DOCUMENT',
+    type: 'DOCUMENT_DONE',
+    content: '"그랜드웨딩홀_계약서.pdf" 문서 분석이 완료됐어요. 추출된 정보를 확인해보세요.',
+    targetPath: '/planner/contracts/mock-1',
+    createdAt: minsAgo(20),
+    isRead: false,
+  },
+  {
+    notificationId: 'p-noti-3',
+    sender: { senderId: 'customer-2', senderName: '박준혁' },
+    category: 'CHAT',
+    type: 'NEW_MESSAGE',
+    content: '박준혁 고객님이 새 메시지를 보냈어요: "드레스샵 예약 날짜 변경 가능한가요?"',
+    targetPath: '/planner/chats/room-2',
+    createdAt: hoursAgo(1),
+    isRead: false,
+  },
+  {
+    notificationId: 'p-noti-4',
+    sender: null,
+    category: 'SYSTEM',
+    type: 'SYSTEM_NOTICE',
+    content: '이번 달 예약 고객 3명의 결혼식이 2개월 이내로 다가왔어요. 일정을 확인해보세요 📅',
+    targetPath: '/planner/customers',
+    createdAt: hoursAgo(3),
+    isRead: true,
+  },
+  {
+    notificationId: 'p-noti-5',
+    sender: { senderId: 'vendor-1', senderName: '그랜드웨딩홀' },
+    category: 'CHAT',
+    type: 'NEW_MESSAGE',
+    content: '그랜드웨딩홀에서 새 메시지를 보냈어요: "5월 예약 가능 일정 공유드립니다."',
+    targetPath: '/planner/chats/room-3',
+    createdAt: hoursAgo(5),
+    isRead: true,
+  },
+  {
+    notificationId: 'p-noti-6',
+    sender: null,
+    category: 'DOCUMENT',
+    type: 'DOCUMENT_FAILED',
+    content: '"로즈드레스_영수증.png" 문서 분석에 실패했어요. 다시 업로드해주세요.',
+    targetPath: '/planner/contracts',
+    createdAt: daysAgo(1),
+    isRead: true,
+  },
+  {
+    notificationId: 'p-noti-7',
+    sender: null,
+    category: 'SYSTEM',
+    type: 'SYSTEM_NOTICE',
+    content: 'Promise Marry 플래너 대시보드에 오신 걸 환영해요! 고객 관리를 시작해보세요 💼',
+    targetPath: '/planner',
+    createdAt: daysAgo(2),
+    isRead: true,
+  },
+];
 
-export async function fetchNotifications(lastId?: string): Promise<NotificationListResponse> {
+// 역할별 Mock 데이터 라우팅 (기본: couple)
+function getMockNotifications(role?: string): Notification[] {
+  return role === 'planner' ? MOCK_NOTIFICATIONS_PLANNER : MOCK_NOTIFICATIONS_COUPLE;
+}
+
+// 역할별 읽음 상태 관리
+const readSets: Record<string, Set<string>> = {
+  couple: new Set<string>(
+    MOCK_NOTIFICATIONS_COUPLE.filter((n) => n.isRead).map((n) => n.notificationId),
+  ),
+  planner: new Set<string>(
+    MOCK_NOTIFICATIONS_PLANNER.filter((n) => n.isRead).map((n) => n.notificationId),
+  ),
+};
+
+export async function fetchNotifications(lastId?: string, role?: string): Promise<NotificationListResponse> {
   if (isMockMode()) {
     await new Promise((r) => setTimeout(r, 250));
-    const list = MOCK_NOTIFICATIONS.map((n) => ({
+    const mockList = getMockNotifications(role);
+    const rs = readSets[role ?? 'couple'] ?? readSets['couple'];
+    const list = mockList.map((n) => ({
       ...n,
-      isRead: readSet.has(n.notificationId),
+      isRead: rs.has(n.notificationId),
     }));
     return { notifications: list, hasNext: false };
   }
@@ -104,17 +189,21 @@ export async function fetchNotifications(lastId?: string): Promise<NotificationL
   return apiClient.get('notifications', { searchParams }).json<NotificationListResponse>();
 }
 
-export async function fetchUnreadCount(): Promise<UnreadCountResponse> {
+export async function fetchUnreadCount(role?: string): Promise<UnreadCountResponse> {
   if (isMockMode()) {
-    const count = MOCK_NOTIFICATIONS.filter((n) => !readSet.has(n.notificationId)).length;
+    const mockList = getMockNotifications(role);
+    const rs = readSets[role ?? 'couple'] ?? readSets['couple'];
+    const count = mockList.filter((n) => !rs.has(n.notificationId)).length;
     return { unreadCount: count };
   }
   return apiClient.get('notifications/unread').json<UnreadCountResponse>();
 }
 
-export async function markAllRead(): Promise<void> {
+export async function markAllRead(role?: string): Promise<void> {
   if (isMockMode()) {
-    MOCK_NOTIFICATIONS.forEach((n) => readSet.add(n.notificationId));
+    const mockList = getMockNotifications(role);
+    const rs = readSets[role ?? 'couple'] ?? readSets['couple'];
+    mockList.forEach((n) => rs.add(n.notificationId));
     return;
   }
   await apiClient.patch('notifications/read-all');

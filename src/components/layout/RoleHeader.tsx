@@ -27,7 +27,7 @@ const ROLE_TITLE_COLOR: Record<Role, string> = {
 export function RoleHeader({ role, title }: RoleHeaderProps) {
   const router = useRouter();
   const nickname = useAuthStore((s) => s.user?.nickname);
-  const { data: unreadData } = useUnreadCount();
+  const { data: unreadData } = useUnreadCount(role);
   const unreadCount = unreadData?.unreadCount ?? 0;
   const displayTitle = title ?? ROLE_LABEL[role];
 
